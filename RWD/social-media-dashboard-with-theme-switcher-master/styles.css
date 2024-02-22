@@ -95,9 +95,10 @@ textarea:not([rows]) {
   --clr-text-secondary: hsl(228, 12%, 44%);
 
   --clr-toggle-bg: hsl(230, 22%, 74%);
+  --clr-toggle-bg-active: linear-gradient(to right, hsl(210, 78%, 56%), hsl(146, 68%, 55%));
 
-  --pattern-desktop: linear-gradient(to bottom, var(--clr-bg-pattern-top) 150px, var(--clr-bg-pattern-main) 150px);
-  --pattern-mobile: linear-gradient(to bottom, var(--clr-bg-pattern-top) 10%, var(--clr-bg-pattern-main) 10%);
+  /* --pattern-desktop: linear-gradient(to bottom, var(--clr-bg-pattern-top) 20%, var(--clr-bg-pattern-main) 20%);
+  --pattern-mobile: linear-gradient(to bottom, var(--clr-bg-pattern-top) 20%, var(--clr-bg-pattern-main) 20%); */
 }
 
 .theme-dark {
@@ -106,27 +107,75 @@ textarea:not([rows]) {
   --clr-bg-card: hsl(228, 28%, 20%);
   --clr-text-primary: hsl(0, 0%, 100%);
   --clr-text-secondary: hsl(228, 34%, 66%);
-  --clr-toggle-bg: linear-gradient(to right, hsl(210, 78%, 56%), hsl(146, 68%, 55%));
+  --clr-toggle-bg: var(--clr-toggle-bg-active);
 }
+
+/* Base Styles */
 
 body {
   font-family: "Inter", sans-serif;
   font-size: 1rem; /* 16px */
   font-weight: 400;
-  background: var(--pattern-mobile);
   color: var(--clr-text-primary);
+  background-color: var(--clr-bg-pattern-main);
   margin: 0;
   padding: 0;
 }
 
-@media screen and (min-width: 768px) {
-  body {
-    background: var(--pattern-desktop);
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+p {
+  margin: 0;
+}
+
+/* Utils */
+
+.wrapper {
+  max-width: min(1200px,  calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.top-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--clr-bg-pattern-top);
+  width: 100%;
+  height: 250px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  z-index: -1;
+}
+
+.divider {
+  border: 1px solid var(--clr-text-secondary);
+  margin: 1.5rem 0;
+}
+
+@media screen and (min-width: 700px) {
+  .top-pattern {
+    border-radius: 0;
+    height: 330px;
+  }
+
+  .divider {
+    display: none;
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.grid {
+  --gap: 2rem;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--gap);
 }
 
 .sr-only:not(:focus):not(:active) {
@@ -167,21 +216,220 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--clr-youTube);
 }
 
-.border-facebook {
-  border-color: var(--clr-facebook);
+/* Main Styles */
+.header {
+  padding-top: 2rem;
+  flex-direction: column;
 }
 
-.border-twitter {
-  border-color: var(--clr-twitter);
+.header__title {
+  font-size: 1.5rem;
+  margin-bottom: 0;
 }
 
-.border-instagram {
-  border-color: var(--clr-instagram);
+.header__subtitle {
+  font-size: .9rem;
+  margin-top: .5rem;
 }
 
-.border-youTube {
-  border-color: var(--clr-youTube);
+.header__toggle {
+  --gap: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap);
 }
+
+.theme-state {
+  font-weight: 700;
+}
+
+.theme-switch {
+  cursor: pointer;
+  display: block;
+  border-radius: 100px;
+  width: 50px;
+  padding: 4px 5px;
+  background: var(--clr-toggle-bg);
+  transition: background .2s ease;
+}
+
+.theme-toggle {
+  display: none;
+}
+
+.theme-switch::after {
+  content: " ";
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background-color: var(--clr-bg-pattern-main);
+  border: 1px solid var(--clr-bg-pattern-main);
+  transition: transform .2s ease;
+}
+
+.theme-toggle:checked ~ .theme-switch {
+  background: var(--clr-toggle-bg-active);
+}
+
+.theme-toggle:checked ~ .theme-switch::after {
+  transform: translate(20px);
+}
+
+/* Header Section on larger devices */
+@media screen and (min-width: 700px) {
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .header__toggle {
+    --gap: 1rem;
+
+  }
+}
+
+.summary {
+  margin-top: 3rem;
+}
+
+.summary__card {
+  position: relative;
+  padding: 2rem 0;
+  background-color: var(--clr-bg-card);
+  border-bottom-left-radius: 6.5px;
+  border-bottom-right-radius: 6.5px;
+  text-align: center;
+}
+
+.summary__card::before {
+  content: " ";
+  position: absolute;
+  top: -4px;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 6.5px;
+  z-index: -1;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-border-facebook::before {
+  background-color: var(--clr-facebook);
+}
+
+.card-border-instagram::before {
+  background: var(--clr-instagram);
+}
+
+.card-border-twitter::before {
+  background: var(--clr-twitter);
+}
+
+.card-border-youtube::before {
+  background: var(--clr-youTube);
+}
+
+
+/*
+  The trick here did'nt give me what i wanted
+  but will need it for another project. so keep it here
+*/
+
+/* .summary__card {
+  border-radius: 6.5px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  text-align: center;
+  padding-top: 5px;
+}
+
+.summary__card p {
+  background-color: var(--clr-bg-card);
+  padding: 2rem 0;
+  border-bottom-left-radius: 6.5px;
+  border-bottom-right-radius: 6.5px;
+} */
+
+.summary__card p:hover {
+  opacity: 0.8;
+}
+
+.followers-count, .followers {
+  display: block;
+}
+
+.username {
+  color: var(--clr-text-secondary);
+  font-weight: 700;
+}
+
+.followers-count {
+  font-size: 3rem;
+  font-weight: 900;
+}
+
+.followers {
+  margin-top: -5px;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  color: var(--clr-text-secondary);
+  letter-spacing: 5px;
+}
+
+.followers-today {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.overview {
+  margin: 4rem 0;
+}
+
+.overview__heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--clr-text-secondary);
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+.overview__card {
+  background-color: var(--clr-bg-card);
+  padding: 2rem;
+  border-radius: 6.5px;
+}
+
+.overview__card:hover {
+  opacity: 0.8;
+}
+
+.overview__title {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.overview__text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.overview__text :first-child {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.overview__text :last-child {
+  font-weight: 700;
+}
+
 
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); }

@@ -13,228 +13,240 @@
   <link rel="stylesheet" href="./styles.css">
 
   <script src="https://kit.fontawesome.com/0b8c545fbf.js" crossorigin="anonymous"></script>
+  <script src="./index.js" defer></script>
 </head>
 <body>
-  <header>
-    <h1>
-      Social Media Dashboard
-      <span>Total Followers: 23,004</span>
-    </h1>
-    <div class="toggle">
-      <span>Dark Mode</span>
-      <input type="checkbox" id="checkbox" />
-      <label for="checkbox"></label>
-  </header>
-  <main class="main">
-    <section class="summary">
-      <div class="summary__card border-facebook">
-        <p>
-          <span class="text-facebook">
-            icon
-          </span>
-          <span class="username">
-            @nathanf
-          </span>
-          <span class="followers-count">1987</span>
-          <span class="followers">Followers</span>
-          <span class="followers-today">
-            <span>icon</span>
-            12 Today
-          </span>
-        </p>
+  <div class="top-pattern"></div>
+  <div class="wrapper">
+    <header class="header row">
+      <div class="header__headding">
+        <h1 class="header__title">
+          Social Media Dashboard
+        </h1>
+        <h2 class="text-faded header__subtitle">
+          Total Followers: 23,004
+        </h2>
       </div>
-      <div class="summary__card border-twitter">
-        <p>
-          <span class="text-twitter">
-            icon
-          </span>
-          <span class="username">
-            @nathanf
-          </span>
-          <span class="followers-count">1044</span>
-          <span class="followers">Followers</span>
-          <span class="followers-today">
-            <span>icon</span>
-            99 Today
-          </span>
-        </p>
+      <div class="divider"></div>
+      <div class="header__toggle ">
+        <span class="theme-state text-faded">Dark Mode</span>
+        <input class="theme-toggle" type="checkbox" id="themeToggle" />
+        <label class="theme-switch" for="themeToggle"></label>
       </div>
-      <div class="summary__card border-instagram">
-        <p>
-          <span class="text-instagram">
-            icon
-          </span>
-          <span class="username">
-            @realnathanf
-          </span>
-          <span class="followers-count">11k</span>
-          <span class="followers">Followers</span>
-          <span class="followers-today">
-            <span>icon</span>
-            1099 Today
-          </span>
-        </p>
-      </div>
-      <div class="summary__card border-youtube">
-        <p>
-          <span class="text-youtube">
-            icon
-          </span>
-          <span class="username">
-            Nathan F.
-          </span>
-          <span class="followers-count">8239</span>
-          <span class="followers">Subscribers</span>
-          <span class="followers-today">
-            <span>icon</span>
-            144 Today
-          </span>
-        </p>
-      </div>
-    </section>
-    <section class="overview">
-      <h2>Overview - Today</h2>
-      <div class="overview__card">
-        <h3 class="overview__title">
-          <span class="text-faded">Page Views</span>
-          <span class="text-facebook">
-            <i class=""></i>
-          </span>
-        </h3>
-        <div class="overview__text">
-          <span>87</span>
-          <span class="text-ok">
-            <span>
-              <i class=""></i>
+    </header>
+    <main class="main">
+      <section class="summary grid">
+        <div class="summary__card card-border-facebook">
+          <p>
+            <span class="text-facebook">
+              icon
             </span>
-            3%
-          </span>
-        </div>
-      </div>
-      <div class="overview__card">
-        <h3 class="overview__title">
-          <span class="text-faded">Likes</span>
-          <span class="text-facebook">
-            <i class=""></i>
-          </span>
-        </h3>
-        <div class="overview__text">
-          <span>52</span>
-          <span class="text-danger">
-            <span>
-              <i class=""></i>
+            <span class="username">
+              @nathanf
             </span>
-            2%
-          </span>
-        </div>
-      </div>
-      <div class="overview__card">
-        <h3 class="overview__title">
-          <span class="text-faded">Likes</span>
-          <span class="text-instagram">
-            <i class=""></i>
-          </span>
-        </h3>
-        <div class="overview__text">
-          <span>5462</span>
-          <span class="text-ok">
-            <span>
-              <i class=""></i>
+            <span class="followers-count">1987</span>
+            <span class="followers">Followers</span>
+            <span class="followers-today text-ok">
+              <span>icon</span>
+              12 Today
             </span>
-            22257%
-          </span>
+          </p>
         </div>
-      </div>
-      <div class="overview__card">
-        <h3 class="overview__title">
-          <span class="text-faded">Profile Views</span>
-          <span class="text-instagram">
-            <i class=""></i>
-          </span>
-        </h3>
-        <div class="overview__text">
-          <span>52k</span>
-          <span class="text-ok">
-            <span>
-              <i class=""></i>
+        <div class="summary__card card-border-twitter">
+          <p>
+            <span class="text-twitter">
+              icon
             </span>
-            1375%
-          </span>
-        </div>
-      </div>
-      <div class="overview__card">
-        <h3 class="overview__title">
-          <span class="text-faded">Retweets</span>
-          <span class="text-twitter">
-            <i class=""></i>
-          </span>
-        </h3>
-        <div class="overview__text">
-          <span>117</span>
-          <span class="text-ok">
-            <span>
-              <i class=""></i>
+            <span class="username">
+              @nathanf
             </span>
-            303%
-          </span>
-        </div>
-      </div>
-      <div class="overview__card">
-        <h3 class="overview__title">
-          <span class="text-faded">Likes</span>
-          <span class="text-twitter">
-            <i class=""></i>
-          </span>
-        </h3>
-        <div class="overview__text">
-          <span>507</span>
-          <span class="text-ok">
-            <span>
-              <i class=""></i>
+            <span class="followers-count">1044</span>
+            <span class="followers">Followers</span>
+            <span class="followers-today text-ok">
+              <span>icon</span>
+              99 Today
             </span>
-            553%
-          </span>
+          </p>
         </div>
-      </div>
-      <div class="overview__card">
-        <h3 class="overview__title">
-          <span class="text-faded">Likes</span>
-          <span class="text-youtube">
-            <i class=""></i>
-          </span>
-        </h3>
-        <div class="overview__text">
-          <span>107</span>
-          <span class="text-danger">
-            <span>
-              <i class=""></i>
+        <div class="summary__card card-border-instagram">
+          <p>
+            <span class="text-instagram">
+              icon
             </span>
-            19%
-          </span>
-        </div>
-      </div>
-      <div class="overview__card">
-        <h3 class="overview__title">
-          <span class="text-faded">Total Views</span>
-          <span class="text-youtube">
-            <i class=""></i>
-          </span>
-        </h3>
-        <div class="overview__text">
-          <span>1407</span>
-          <span class="text-danger">
-            <span>
-              <i class=""></i>
+            <span class="username">
+              @realnathanf
             </span>
-            12%
-          </span>
+            <span class="followers-count">11k</span>
+            <span class="followers">Followers</span>
+            <span class="followers-today text-ok">
+              <span>icon</span>
+              1099 Today
+            </span>
+          </p>
         </div>
-      </div>
-    </section>
-    <section class="attribution sr-only">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-      Coded by <a href="#">Your Name Here</a>.
-    </section>
-  </main>
+        <div class="summary__card card-border-youtube">
+          <p>
+            <span class="text-youtube">
+              icon
+            </span>
+            <span class="username">
+              Nathan F.
+            </span>
+            <span class="followers-count">8239</span>
+            <span class="followers">Subscribers</span>
+            <span class="followers-today text-danger">
+              <span>icon</span>
+              144 Today
+            </span>
+          </p>
+        </div>
+      </section>
+      <section class="overview">
+        <h2 class="overview__heading">Overview - Today</h2>
+        <div class="grid">
+          <div class="overview__card">
+            <h3 class="overview__title">
+              <span class="text-faded">Page Views</span>
+              <span class="text-facebook">
+                <i class=""></i>
+              </span>
+            </h3>
+            <div class="overview__text">
+              <span>87</span>
+              <span class="text-ok">
+                <i class=""></i>
+              </span>
+              <span class="text-ok">
+                3%
+              </span>
+            </div>
+          </div>
+          <div class="overview__card">
+            <h3 class="overview__title">
+              <span class="text-faded">Likes</span>
+              <span class="text-facebook">
+                <i class=""></i>
+              </span>
+            </h3>
+            <div class="overview__text">
+              <span>52</span>
+              <span class="text-danger">
+                <i class=""></i>
+              </span>
+              <span class="text-danger">
+                2%
+              </span>
+            </div>
+          </div>
+          <div class="overview__card">
+            <h3 class="overview__title">
+              <span class="text-faded">Likes</span>
+              <span class="text-instagram">
+                <i class=""></i>
+              </span>
+            </h3>
+            <div class="overview__text">
+              <span>5462</span>
+              <span class="text-ok">
+                <i class=""></i>
+              </span>
+              <span class="text-ok">
+                22257%
+              </span>
+            </div>
+          </div>
+          <div class="overview__card">
+            <h3 class="overview__title">
+              <span class="text-faded">Profile Views</span>
+              <span class="text-instagram">
+                <i class=""></i>
+              </span>
+            </h3>
+            <div class="overview__text">
+              <span>52k</span>
+              <span class="text-ok">
+                <i class=""></i>
+              </span>
+              <span class="text-ok">
+                1375%
+              </span>
+            </div>
+          </div>
+          <div class="overview__card">
+            <h3 class="overview__title">
+              <span class="text-faded">Retweets</span>
+              <span class="text-twitter">
+                <i class=""></i>
+              </span>
+            </h3>
+            <div class="overview__text">
+              <span>117</span>
+              <span class="text-ok">
+                <i class=""></i>
+              </span>
+              <span class="text-ok">
+                303%
+              </span>
+            </div>
+          </div>
+          <div class="overview__card">
+            <h3 class="overview__title">
+              <span class="text-faded">Likes</span>
+              <span class="text-twitter">
+                <i class=""></i>
+              </span>
+            </h3>
+            <div class="overview__text">
+              <span>507</span>
+              <span class="text-ok">
+                <i class=""></i>
+              </span>
+              <span class="text-ok">
+                553%
+              </span>
+            </div>
+          </div>
+          <div class="overview__card">
+            <h3 class="overview__title">
+              <span class="text-faded">Likes</span>
+              <span class="text-youtube">
+                <i class=""></i>
+              </span>
+            </h3>
+            <div class="overview__text">
+              <span>107</span>
+              <span class="text-danger">
+                <i class=""></i>
+              </span>
+              <span class="text-danger">
+                19%
+              </span>
+            </div>
+          </div>
+          <div class="overview__card">
+            <h3 class="overview__title">
+              <span class="text-faded">Total Views</span>
+              <span class="text-youtube">
+                <i class=""></i>
+              </span>
+            </h3>
+            <div class="overview__text">
+              <span>1407</span>
+              <span class="text-danger">
+                <i class=""></i>
+              </span>
+              <span class="text-danger">
+                12%
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="attribution sr-only">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+        Coded by <a href="#">Your Name Here</a>.
+      </section>
+    </main>
+  </div>
 </body>
 </html>
