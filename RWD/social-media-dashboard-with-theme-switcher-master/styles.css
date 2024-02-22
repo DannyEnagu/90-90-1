@@ -118,6 +118,7 @@ body {
   font-weight: 400;
   color: var(--clr-text-primary);
   background-color: var(--clr-bg-pattern-main);
+  transition: background .2s ease;
   margin: 0;
   padding: 0;
 }
@@ -142,6 +143,7 @@ p {
   top: 0;
   left: 0;
   background-color: var(--clr-bg-pattern-top);
+  transition: background .2s ease;
   width: 100%;
   height: 250px;
   border-bottom-left-radius: 15px;
@@ -299,6 +301,7 @@ p {
   position: relative;
   padding: 2rem 0;
   background-color: var(--clr-bg-card);
+  transition: background .2s ease;
   border-bottom-left-radius: 6.5px;
   border-bottom-right-radius: 6.5px;
   text-align: center;
@@ -313,6 +316,7 @@ p {
   width: 100%;
   height: 6.5px;
   z-index: -1;
+  transition: background .2s ease;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -402,6 +406,7 @@ p {
 
 .overview__card {
   background-color: var(--clr-bg-card);
+  transition: background .2s ease;
   padding: 2rem;
   border-radius: 6.5px;
 }
