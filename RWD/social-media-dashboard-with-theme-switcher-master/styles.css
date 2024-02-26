@@ -96,9 +96,6 @@ textarea:not([rows]) {
 
   --clr-toggle-bg: hsl(230, 22%, 74%);
   --clr-toggle-bg-active: linear-gradient(to right, hsl(210, 78%, 56%), hsl(146, 68%, 55%));
-
-  /* --pattern-desktop: linear-gradient(to bottom, var(--clr-bg-pattern-top) 20%, var(--clr-bg-pattern-main) 20%);
-  --pattern-mobile: linear-gradient(to bottom, var(--clr-bg-pattern-top) 20%, var(--clr-bg-pattern-main) 20%); */
 }
 
 .theme-dark {
@@ -215,7 +212,15 @@ p {
 }
 
 .text-youtube {
-  color: var(--clr-youTube);
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--clr-bg-pattern-main);
+  background-color: var(--clr-youTube);
+  border-radius: 100%;
+  height: 20px;
+  width: 20px;
 }
 
 /* Main Styles */
@@ -325,6 +330,12 @@ p {
   border-top-right-radius: 10px;
 }
 
+.summary__card .row {
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
 .card-border-facebook::before {
   background-color: var(--clr-facebook);
 }
@@ -427,7 +438,7 @@ p {
   justify-content: space-between;
 }
 
-.overview__title :first-child {
+.overview__title .text-faded {
   font-size: 1rem;
   font-weight: 700;
 }
