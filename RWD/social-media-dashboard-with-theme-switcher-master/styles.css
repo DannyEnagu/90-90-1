@@ -257,6 +257,10 @@ p {
   transition: background .2s ease;
 }
 
+.theme-switch:hover {
+  background: var(--clr-toggle-bg-active);
+}
+
 .theme-toggle {
   display: none;
 }
@@ -389,7 +393,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2px;
+  gap: 0.3rem;
 }
 
 .overview {
@@ -418,15 +422,30 @@ p {
 .overview__title {
   margin-top: 0;
   margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.overview__title :first-child {
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 .overview__text {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.3rem;
+  font-size: .8rem;
 }
 
-.overview__text :first-child {
+.caret-icon {
+  font-size: 1rem;
+  margin-left: auto;
+}
+
+.overview__count {
   font-size: 2.5rem;
   font-weight: 700;
 }
