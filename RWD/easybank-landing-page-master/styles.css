@@ -98,12 +98,25 @@ body {
   font-size: 1.125rem; /* 18px */
   font-family: var(--ff);
   font-weight: var(--fw-regular);
-  color: var(--clr-tetiary);
+  color: var(--clr-neutral-400);
+  background-color: var(--clr-neutral-100);
+  margin: 0;
+  padding: 0;
 }
 
 h1, h2, h3, h4 {
   font-family: var(--ff);
   font-weight: var(--fw-bold);
+}
+
+header {
+  background-color: var(--clr-neutral-100);
+  margin: 0;
+}
+
+footer {
+  color: var(--clr-neutral-100);
+  background-color: var(--clr-tetiary);
 }
 
 /* Utilities */
@@ -137,6 +150,18 @@ h1, h2, h3, h4 {
   white-space: nowrap; 
   width: 1px;
 }
+
+.into-bg-pattern {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 300px;
+  width: 100%;
+  z-index: -1;
+  background: url('./images/bg-intro-mobile.svg') no-repeat;
+  border: 1px solid red;
+}
+
 
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); }
