@@ -10,12 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <!-- <script src="https://kit.fontawesome.com/0b8c545fbf.js" crossorigin="anonymous"></script> -->
+  <script src="./index.js" defer></script>
 </head>
 <body>
-  <header>
-    <div class="wrapper">
-      <nav class="nav flex">
-        <img src="./images/logo.svg" alt="Easybank logo">
+  <header id="header" class="header">
+    <div class="wrapper header__content">
+      <img src="./images/logo.svg" alt="Easybank logo">
+      <nav id="menu" class="nav">
         <ul class="nav__list nav__list--primary" role="list">
           <li class="nav__item">
             <a href="#" class="nav__link">Home</a>
@@ -35,16 +36,16 @@
         </ul>
         <ul class="nav__list nav__list--secondary" role="list">
           <li class="nav__item">
-            <a href="#" class="nav__link btn">
+            <a href="#" class="nav__link btn btn-primary">
               Request Invite
             </a>
           </li>
         </ul>
-        <button class="nav__toggle" aria-label="Toggle navigation">
-          <img src="./images/icon-close.svg" alt="Menu close">
-          <img src="./images/icon-hamburger.svg" alt="Menu bars">
-        </button>
       </nav>
+      <button id="navToggle" class="nav__toggle btn" aria-label="Toggle navigation">
+        <img id="toggleClose" class="toggle-nav__icon hidden" src="./images/icon-close.svg" alt="Menu close">
+        <img id="toggleOpen" class="toggle-nav__icon" src="./images/icon-hamburger.svg" alt="Menu bars">
+      </button>
     </div>
   </header>
 
@@ -61,7 +62,7 @@
             Take your financial life online. Your Easybank account will be a one-stop-shop 
             for spending, saving, budgeting, investing, and much more.
           </p>
-          <a href="#" class="btn hero__cta">
+          <a href="#" class="btn btn-primary">
             Request Invite
           </a>
         </div>
