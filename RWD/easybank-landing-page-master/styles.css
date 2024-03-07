@@ -189,7 +189,7 @@ footer {
   width: 100%;
   z-index: -1;
   background: url('./images/bg-intro-mobile.svg') no-repeat;
-  background-position: center;
+  /* background-position: cover; */
 }
 
 .header {
