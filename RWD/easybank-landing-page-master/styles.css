@@ -189,7 +189,17 @@ footer {
   width: 100%;
   z-index: -1;
   background: url('./images/bg-intro-mobile.svg') no-repeat;
-  /* background-position: cover; */
+  background-position: cover;
+}
+
+@media screen and (min-width: 370px) {
+  .into-bg-pattern {
+    background: url('./images/bg-intro-desktop.svg') no-repeat;
+    background-size: cover;
+    right: -10px;
+    background-position: 1px -120px;
+    height: 100vh;
+  }
 }
 
 .header {
@@ -276,7 +286,6 @@ footer {
 .hero {
   padding-top: 0;
   padding-bottom: 4em;
-  margin-top: -75px;
 }
 
 .hero__wrapper {
@@ -294,6 +303,16 @@ footer {
 .hero__text {
   font-size: 1rem;
   margin-bottom: 2em;
+}
+
+.hero__image {
+  width: 90%;
+  margin-inline: auto;
+}
+
+.hero__image img {
+  height: 100%;
+  width: 100%;
 }
 
 .articles,
@@ -342,11 +361,7 @@ footer {
 @media screen and (min-width: 760px) {
 
   .into-bg-pattern {
-    background: url('./images/bg-intro-desktop.svg') no-repeat;
-    background-size: cover;
-    background-position: 110px -100px;
-    width: 60%;
-    height: 750px;
+    width: 50%;
   }
 
   .header {
@@ -428,7 +443,8 @@ footer {
   .hero {
     margin-top: 0;
     padding-bottom: 0;
-    height: 500px;
+    height: 80vh;
+    display: flex;
   }
 
   .hero__wrapper {
@@ -450,19 +466,27 @@ footer {
   .hero__text {
     font-size: 1.2rem;
     font-weight: normal;
-    width: 80%;
+    width: 90%;
   }
 
   .hero__content .btn {
     padding: 0.4em 2em;
   }
   
-  .hero__image img {
-    position: absolute;
-    top: -20px;
-    right: -140px;
+  .hero__image {
+    width: auto;
     height: 720px;
-    width: 50%;
+  }
+  
+  .hero__image img {
     object-fit: scale-down;
   }  
+}
+
+@media screen and (min-width: 1440px) {
+  .hero__image {
+    margin-right: -18%;
+    height: 800px;
+    height: 720px;
+  }
 }
