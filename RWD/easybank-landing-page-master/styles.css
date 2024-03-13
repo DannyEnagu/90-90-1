@@ -176,6 +176,8 @@ footer {
 }
 
 .card__img {
+  height: 200px;
+  width: 100%;
   border-radius: 5px 5px 0 0;
 }
 
@@ -212,13 +214,14 @@ footer {
   .into-bg-pattern {
     background: url('./images/bg-intro-desktop.svg') no-repeat;
     background-size: cover;
-    background-position: 1px -120px;
+    background-position: 1px solid red -120px;
     height: 100vh;
   }
 }
 
 .section__heading {
   font-size: 2rem;
+  font-weight: var(--fw-regular);
   margin-bottom: 1em;
   text-align: center;
 }
@@ -419,9 +422,17 @@ footer {
 .footer__cta {
   --gap: 1em;
 
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin-top: 2em;
 }
+
+.footer__cta .btn {
+  padding: 0.5em 1.5em;
+}
+
+
 
 .footer__cta p {
   font-size: 1.3rem;
@@ -468,6 +479,18 @@ footer {
 
 
 @media screen and (min-width: 760px) {
+
+  section {
+    padding: 4em 0;
+  }
+
+  footer {
+    padding: 4em 0;
+  }
+
+  .card__body {
+    padding-bottom: 0;
+  }
 
   .into-bg-pattern {
     width: 50%;
@@ -590,13 +613,58 @@ footer {
     object-fit: scale-down;
   }
 
+  .section__heading {
+    font-size: 3rem;
+    text-align: left;
+  }
+
+  .section__intro {
+    text-align: left;
+  }
+
+  .features,
+  .articles {
+    padding-bottom: 6em;
+  }
+
   .footer__content {
+    --gap: 1em;
+
     display: flex;
+    justify-content: space-between;
+  }
+
+  .footer__logo,
+  .footer__cta {
+    flex: 1;
+    margin-top: 0;
   }
 
   .footer__nav {
-    flex: 1 1 1;
+    --gap: 4em;
+
+    flex: 2;
     flex-direction: row;
+    margin-top: 0;
+  }
+
+  .footer__nav .nav__link {
+    text-align: left;
+    padding: .5em;
+  }
+
+  .footer__social {
+    --gap: 0.7em;
+  
+    margin-top: 3em;
+  }
+
+  .footer__cta {
+    justify-content: flex-end;
+  }
+
+  .footer__cta p {
+    font-size: 1.1rem;
   }
 }
 
