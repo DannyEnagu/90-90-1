@@ -30,8 +30,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://www.frontendmentor.io/challenges/easybank-landing-page-WaUhkoDN/hub)
-- Live Site URL: [Add live site URL here](https://easybank-landing-page-zeta-eight.vercel.app/)
+- Solution URL: [Solution URL](https://www.frontendmentor.io/challenges/easybank-landing-page-WaUhkoDN/hub)
+- Live Site URL: [Live site URL](https://easybank-landing-page-zeta-eight.vercel.app/)
 
 ## My process
 
