@@ -214,7 +214,7 @@ footer {
   .into-bg-pattern {
     background: url('./images/bg-intro-desktop.svg') no-repeat;
     background-size: cover;
-    background-position: 1px solid red -120px;
+    background-position: 1px -120px;
     height: 100vh;
   }
 }
