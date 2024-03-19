@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  
+  <title>Frontend Mentor | IP Address Tracker</title>
+</head>
+<body>
+  <header class="header">
+    <div class="bg-pattern"></div>
+    <div class="wrapper">
+      <h1>IP Address Tracker</h1>
+      <form>
+        <input type="text" placeholder="Search for any IP address or domain">
+        <button type="submit">
+          <img src="./images/icon-arrow.svg" alt="search">
+        </button>
+      </form>
+    </div>
+  </header>
+  <main>
+    <div class="wrapper">
+      <div class="location card">
+        <div class="location__ipa">
+          <h2>IP Address</h2>
+          <!-- add IP Address value dynamically using the API -->
+        </div>
+        <div class="location__info">
+          <h2>Location</h2>
+          <!-- add Location Information value dynamically using the API -->
+        </div>
+        <div class="location__timezone">
+          <h2>Timezone</h2>
+          <p>UTC <!-- add offset value dynamically using the API --></p>
+        </div>
+        <div class="location__isp">
+          <h2>ISP</h2>
+          <!-- add ISP value dynamically using the API -->
+        </div>
+      </div>
+      <div id="map" class="map"></div>
+    </div>
+  </main>
+  
+  <div class="attribution sr-only">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+</body>
+</html>
