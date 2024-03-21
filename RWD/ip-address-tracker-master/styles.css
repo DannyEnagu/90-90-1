@@ -79,10 +79,23 @@ body {
 }
 
 form {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0;
+}
+
+.error {
+  display: none;
+  position: absolute;
+  top: -35px;
+  left: 0;
+  font-size: 0.8rem;
+  font-weight: var(--fw-bold);
+  color: hsl(0, 100%, 74%);
+  font-size: .8rem;
+  width: 100%;
 }
 
 form input,
@@ -125,6 +138,7 @@ form button {
   padding: .5em 0;
 }
 
+
 @media screen and (min-width: 760px) {
   .card {
     flex-direction: row;
@@ -153,3 +167,4 @@ form button {
   font-weight: var(--fw-normal);
   text-align: center;
 }
+
