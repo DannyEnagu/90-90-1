@@ -1,43 +1,38 @@
-const API_KEY = 'at_OkI9ADcXwwIjVCXz0qjSCqr85UfsS';
-const API_URL = 'https://geo.ipify.org/api/v2/country?apiKey=';
+import {
+  getOwnIP,
+  getGeoData,
+  GeoData,
+} from './geo.js';
 
-// JSON Object Types
-type JSONPrimitive = string | number | boolean | null;
-type JSONArray = JSONValue[];
-type JSONObject = { [k: string]: JSONValue };
-type JSONValue = JSONArray | JSONObject | JSONPrimitive;
+// Display Error Message
+function displayError(message: string) {
+  const error = document.getElementById('errorMsg') as HTMLParagraphElement;
+  error.style.display = 'block';
+  error.innerText = message;
 
-interface GeoData {
-  ip: string;
-  location: JSONObject;
-  isp: string;
-  as: JSONObject;
-  domains: JSONArray;
+  setTimeout(() => {
+    error.style.display = 'none';
+    error.innerText = '';
+  }, 3000);
+}
+
+async function searchIP(e: Event) {
+  e.preventDefault();
+  const input = document.getElementById('search') as HTMLInputElement;
+  const ipOrDomain = input.value;
+  if (!ipOrDomain) {
+    displayError('IP Address or Domain is required');
+    return;
+  } else {
+    const geoData = await getGeoData(ipOrDomain);
+    if (geoData.code === 422) {
+      displayError(geoData.messages);
+    } else {
+      displayGeoData(geoData);
+    }
+  }
+
 };
-
-function checkIpAddress(ip: string): boolean { 
-  const ipv4Pattern =  
-    /^(\d{1,3}\.){3}\d{1,3}$/; 
-  const ipv6Pattern =  
-    /^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$/; 
-  return ipv4Pattern.test(ip) || ipv6Pattern.test(ip); 
-} 
-
-async function getOwnIP(): Promise<string> {
-  return await fetch('https://api.ipify.org?format=json')
-    .then(response => response.json())
-    .then(data => data.ip);
-}
-
-async function getGeoData(ipOrDomain: string): Promise<GeoData> {
-  const query = checkIpAddress(ipOrDomain)
-  ? `ipAddress=${ipOrDomain}`
-  : `domain=${ipOrDomain}`;
-
-  return await fetch(`${API_URL}${API_KEY}&${query}`)
-    .then(response => response.json())
-    .then(data => data);
-}
 
 // Display Geo Location Data
 function displayGeoData(geoData: GeoData) {
@@ -53,22 +48,29 @@ function displayGeoData(geoData: GeoData) {
       case 'ipAddress':
         const p = document.createElement('p');
         p.innerText = geoData.ip;
-        ipAddress.appendChild(p);
+        const oldIp = ipAddress.lastElementChild as HTMLParagraphElement;
+        ipAddress.replaceChild(p, oldIp);
         break;
+
         case 'location':
         const p2 = document.createElement('p');
         p2.innerText = `${geoData.location.region}, ${geoData.location.country}`;
-        location.appendChild(p2);
+        const oldloc = location.lastElementChild as HTMLParagraphElement;
+        location.replaceChild(p2, oldloc);
         break;
+
         case 'timezone':
         const p3 = document.createElement('p');
         p3.innerText = `UTC ${geoData.location.timezone}`;
-        timezone.appendChild(p3);
+        const oldTime = timezone.lastElementChild as HTMLParagraphElement;
+        timezone.replaceChild(p3, oldTime);
         break;
+        
         case 'isp':
         const p4 = document.createElement('p');
         p4.innerText = geoData.isp;
-        isp.appendChild(p4);
+        const oldIsp = isp.lastElementChild as HTMLParagraphElement;
+        isp.replaceChild(p4, oldIsp);
         break;
   
       default:
@@ -77,13 +79,16 @@ function displayGeoData(geoData: GeoData) {
   });
 }
 
+// Event Listener
+const form = document.getElementById('form') as HTMLFormElement;
+form.addEventListener('submit', searchIP);
+
 async function main() {
   const ip = await getOwnIP();
   const geoData = await getGeoData(ip);
   if (geoData) {
     displayGeoData(geoData);
   }
-  console.log(geoData);
 }
 
 main();

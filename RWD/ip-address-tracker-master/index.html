@@ -14,7 +14,7 @@
   
   <title>Frontend Mentor | IP Address Tracker</title>
 
-  <script src="./index.js" defer></script>
+  <script src="./index.js" type="module" defer></script>
 </head>
 <body>
   <header class="header">
@@ -23,7 +23,7 @@
       <h1>IP Address Tracker</h1>
       <form id="form">
         <p class="error" id="errorMsg">Not Found</p>
-        <input type="text" placeholder="Search for any IP address or domain">
+        <input type="text" id="search" placeholder="Search for any IP address or domain">
         <button type="submit">
           <img src="./images/icon-arrow.svg" alt="search">
         </button>
@@ -35,19 +35,19 @@
       <div class="location card">
         <div id="ipAddress" class="location__ipa card__content">
           <h2>IP Address</h2>
-          <!-- add IP Address value dynamically using the API -->
+          <p><!-- Add IP Address value dynamically using the API --></p>
         </div>
         <div id="location" class="location__info card__content">
           <h2>Location</h2>
-          <!-- add Location Information value dynamically using the API -->
+          <p><!-- Add Location value dynamically using the API --></p>
         </div>
         <div id="timezone" class="location__timezone card__content">
           <h2>Timezone</h2>
-          <!-- add offset value dynamically using the API -->
+          <p><!-- Add Timezone value dynamically using the API --></p>
         </div>
         <div id="isp" class="location__isp card__content">
           <h2>ISP</h2>
-          <!-- add ISP value dynamically using the API -->
+          <p><!-- Add ISP value dynamically using the API --></p>
         </div>
       </div>
       <div id="map" class="map"></div>

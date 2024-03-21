@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -8,31 +7,38 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const API_KEY = 'at_OkI9ADcXwwIjVCXz0qjSCqr85UfsS';
-const API_URL = 'https://geo.ipify.org/api/v2/country?apiKey=';
+import { getOwnIP, getGeoData, } from './geo.js';
+// Display Error Message
+function displayError(message) {
+    const error = document.getElementById('errorMsg');
+    error.style.display = 'block';
+    error.innerText = message;
+    setTimeout(() => {
+        error.style.display = 'none';
+        error.innerText = '';
+    }, 3000);
+}
+function searchIP(e) {
+    return __awaiter(this, void 0, void 0, function* () {
+        e.preventDefault();
+        const input = document.getElementById('search');
+        const ipOrDomain = input.value;
+        if (!ipOrDomain) {
+            displayError('IP Address or Domain is required');
+            return;
+        }
+        else {
+            const geoData = yield getGeoData(ipOrDomain);
+            if (geoData.code === 422) {
+                displayError(geoData.messages);
+            }
+            else {
+                displayGeoData(geoData);
+            }
+        }
+    });
+}
 ;
-function checkIpAddress(ip) {
-    const ipv4Pattern = /^(\d{1,3}\.){3}\d{1,3}$/;
-    const ipv6Pattern = /^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$/;
-    return ipv4Pattern.test(ip) || ipv6Pattern.test(ip);
-}
-function getOwnIP() {
-    return __awaiter(this, void 0, void 0, function* () {
-        return yield fetch('https://api.ipify.org?format=json')
-            .then(response => response.json())
-            .then(data => data.ip);
-    });
-}
-function getGeoData(ipOrDomain) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const query = checkIpAddress(ipOrDomain)
-            ? `ipAddress=${ipOrDomain}`
-            : `domain=${ipOrDomain}`;
-        return yield fetch(`${API_URL}${API_KEY}&${query}`)
-            .then(response => response.json())
-            .then(data => data);
-    });
-}
 // Display Geo Location Data
 function displayGeoData(geoData) {
     const elementIDs = ['ipAddress', 'location', 'timezone', 'isp'];
@@ -45,28 +51,35 @@ function displayGeoData(geoData) {
             case 'ipAddress':
                 const p = document.createElement('p');
                 p.innerText = geoData.ip;
-                ipAddress.appendChild(p);
+                const oldIp = ipAddress.lastElementChild;
+                ipAddress.replaceChild(p, oldIp);
                 break;
             case 'location':
                 const p2 = document.createElement('p');
                 p2.innerText = `${geoData.location.region}, ${geoData.location.country}`;
-                location.appendChild(p2);
+                const oldloc = location.lastElementChild;
+                location.replaceChild(p2, oldloc);
                 break;
             case 'timezone':
                 const p3 = document.createElement('p');
                 p3.innerText = `UTC ${geoData.location.timezone}`;
-                timezone.appendChild(p3);
+                const oldTime = timezone.lastElementChild;
+                timezone.replaceChild(p3, oldTime);
                 break;
             case 'isp':
                 const p4 = document.createElement('p');
                 p4.innerText = geoData.isp;
-                isp.appendChild(p4);
+                const oldIsp = isp.lastElementChild;
+                isp.replaceChild(p4, oldIsp);
                 break;
             default:
                 break;
         }
     });
 }
+// Event Listener
+const form = document.getElementById('form');
+form.addEventListener('submit', searchIP);
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         const ip = yield getOwnIP();
@@ -74,7 +87,6 @@ function main() {
         if (geoData) {
             displayGeoData(geoData);
         }
-        console.log(geoData);
     });
 }
 main();
