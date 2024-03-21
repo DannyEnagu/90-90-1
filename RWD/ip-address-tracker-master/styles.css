@@ -154,14 +154,20 @@ form button {
   
 }
 
-.card h2 {
+.card__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card__content h2 {
   font-size: .8rem;
   font-weight: var(--fw-bold);
   color: var(--clr-gray);
   margin-bottom: 0;
 }
 
-.card p {
+.card__content p {
   font-size: 1.3rem;
   margin: 0;
   font-weight: var(--fw-normal);

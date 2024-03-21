@@ -47,25 +47,28 @@ function displayGeoData(geoData: GeoData) {
   const timezone = document.getElementById('timezone') as HTMLDivElement;
   const isp = document.getElementById('isp') as HTMLDivElement;
 
-  const p = document.createElement('p');
-
+  
   elementIDs.forEach(element => {
     switch (element) {
       case 'ipAddress':
+        const p = document.createElement('p');
         p.innerText = geoData.ip;
-        ipAddress.appendChild(p)
+        ipAddress.appendChild(p);
         break;
-      case 'location':
-        p.innerText = geoData.ip;
-        location.appendChild(p)
+        case 'location':
+        const p2 = document.createElement('p');
+        p2.innerText = `${geoData.location.region}, ${geoData.location.country}`;
+        location.appendChild(p2);
         break;
-      case 'timezone':
-        p.innerText = `UTC-${geoData.location}`;
-        timezone.appendChild(p)
+        case 'timezone':
+        const p3 = document.createElement('p');
+        p3.innerText = `UTC ${geoData.location.timezone}`;
+        timezone.appendChild(p3);
         break;
-      case 'isp':
-        p.innerText = geoData.isp;
-        isp.appendChild(p)
+        case 'isp':
+        const p4 = document.createElement('p');
+        p4.innerText = geoData.isp;
+        isp.appendChild(p4);
         break;
   
       default:
