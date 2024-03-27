@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 const API_KEY = 'at_OkI9ADcXwwIjVCXz0qjSCqr85UfsS';
-const API_URL = 'https://geo.ipify.org/api/v2/country?apiKey=';
+const API_URL = 'https://geo.ipify.org/api/v1?apiKey=';
 ;
 function checkIpAddress(ip) {
     const ipv4Pattern = /^(\d{1,3}\.){3}\d{1,3}$/;

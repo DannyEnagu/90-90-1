@@ -8,6 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { getOwnIP, getGeoData, } from './geo.js';
+import { unInitializeMap, createMap } from './map.js';
 // Display Error Message
 function displayError(message) {
     const error = document.getElementById('errorMsg');
@@ -23,6 +24,7 @@ function searchIP(e) {
         e.preventDefault();
         const input = document.getElementById('search');
         const ipOrDomain = input.value;
+        unInitializeMap();
         if (!ipOrDomain) {
             displayError('IP Address or Domain is required');
             return;
@@ -46,6 +48,10 @@ function displayGeoData(geoData) {
     const location = document.getElementById('location');
     const timezone = document.getElementById('timezone');
     const isp = document.getElementById('isp');
+    const outPut = document.querySelector('.card');
+    // Create Map Layout
+    createMap(geoData.location.lat, geoData.location.lng);
+    // Update Element with Geo Data
     elementIDs.forEach(element => {
         switch (element) {
             case 'ipAddress':
@@ -56,7 +62,7 @@ function displayGeoData(geoData) {
                 break;
             case 'location':
                 const p2 = document.createElement('p');
-                p2.innerText = `${geoData.location.region}, ${geoData.location.country}`;
+                p2.innerText = `${geoData.location.city}, ${geoData.location.region} ${geoData.location.postalCode ? ', ' + geoData.location.postalCode : ''}`;
                 const oldloc = location.lastElementChild;
                 location.replaceChild(p2, oldloc);
                 break;
@@ -76,6 +82,8 @@ function displayGeoData(geoData) {
                 break;
         }
     });
+    // Display Location Info
+    outPut.classList.remove('hidden');
 }
 // Event Listener
 const form = document.getElementById('form');
@@ -87,6 +95,7 @@ function main() {
         if (geoData) {
             displayGeoData(geoData);
         }
+        console.log(geoData);
     });
 }
 main();

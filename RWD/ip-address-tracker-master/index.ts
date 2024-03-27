@@ -3,6 +3,10 @@ import {
   getGeoData,
   GeoData,
 } from './geo.js';
+import {
+  unInitializeMap,
+  createMap
+} from './map.js';
 
 // Display Error Message
 function displayError(message: string) {
@@ -20,6 +24,9 @@ async function searchIP(e: Event) {
   e.preventDefault();
   const input = document.getElementById('search') as HTMLInputElement;
   const ipOrDomain = input.value;
+
+  unInitializeMap();
+
   if (!ipOrDomain) {
     displayError('IP Address or Domain is required');
     return;
@@ -42,7 +49,12 @@ function displayGeoData(geoData: GeoData) {
   const timezone = document.getElementById('timezone') as HTMLDivElement;
   const isp = document.getElementById('isp') as HTMLDivElement;
 
+  const outPut = document.querySelector('.card') as HTMLDivElement;
+
+  // Create Map Layout
+  createMap(geoData.location.lat, geoData.location.lng);
   
+  // Update Element with Geo Data
   elementIDs.forEach(element => {
     switch (element) {
       case 'ipAddress':
@@ -54,7 +66,7 @@ function displayGeoData(geoData: GeoData) {
 
         case 'location':
         const p2 = document.createElement('p');
-        p2.innerText = `${geoData.location.region}, ${geoData.location.country}`;
+        p2.innerText = `${geoData.location.city}, ${geoData.location.region} ${geoData.location.postalCode ? ', ' + geoData.location.postalCode : ''}`;
         const oldloc = location.lastElementChild as HTMLParagraphElement;
         location.replaceChild(p2, oldloc);
         break;
@@ -77,6 +89,9 @@ function displayGeoData(geoData: GeoData) {
         break;
     }
   });
+
+  // Display Location Info
+  outPut.classList.remove('hidden');
 }
 
 // Event Listener
@@ -89,6 +104,8 @@ async function main() {
   if (geoData) {
     displayGeoData(geoData);
   }
+
+  console.log(geoData)
 }
 
 main();
